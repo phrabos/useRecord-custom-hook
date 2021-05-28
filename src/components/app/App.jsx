@@ -5,8 +5,8 @@ const useRecord = (init) => {
   const [idx, setIdx] = useState(0);
 
   const record = (hex) => {
-    setCurrent((prev) => [...prev, hex]);
-    setIdx(current.length);
+    setCurrent((prev) => [...prev.slice(0, idx + 1), hex, ...prev.slice(idx + 1)]);
+    setIdx(prevIdx => prevIdx + 1);
 
   };
  

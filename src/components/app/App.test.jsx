@@ -26,7 +26,7 @@ describe('App color picker', () => {
 
     fireEvent.change(pickColor, { target: { value: '#FB00FF' } });
     fireEvent.click(undo);
-    expect(colorBox).toHaveStyle({ 'background-color': '#BBFF00' });
+    expect(colorBox).toHaveStyle({ 'background-color': '#0011FF' });
   });
 });
 
