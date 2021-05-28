@@ -7,14 +7,15 @@ const useRecord = (init) => {
   const record = (hex) => {
     setCurrent((prev) => [...prev, hex]);
     setIdx(current.length);
+
   };
  
   const undo = () => {
-    if(idx > 0) setIdx(prevIdx => prevIdx - 1);
+    setIdx(prevIdx => prevIdx - 1);
   };
 
   const redo = () => {
-    if(idx < current.length - 1) setIdx(prevIdx => prevIdx + 1);
+    setIdx(prevIdx => prevIdx + 1);
   };
 
 
@@ -26,8 +27,8 @@ function App() {
   
   return (
     <>
-      <button onClick={undo}>undo</button>
-      <button onClick={redo}>redo</button>
+      <button disabled={idx === 0} onClick={undo}>undo</button>
+      <button disabled={idx >= current.length - 1} onClick={redo}>redo</button>
       <input type="color" value={current[idx]} onChange={({ target }) => record(target.value)} />
       <div style={{ backgroundColor: current[idx], width: '10rem', height: '10rem' }}></div>
     </>
