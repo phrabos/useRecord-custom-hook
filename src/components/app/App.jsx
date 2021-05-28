@@ -27,10 +27,32 @@ function App() {
   
   return (
     <>
-      <button disabled={idx === 0} onClick={undo}>undo</button>
-      <button disabled={idx >= current.length - 1} onClick={redo}>redo</button>
-      <input type="color" value={current[idx]} onChange={({ target }) => record(target.value)} />
-      <div style={{ backgroundColor: current[idx], width: '10rem', height: '10rem' }}></div>
+      <button
+        aria-label="undo" 
+        disabled={idx === 0} 
+        onClick={undo}
+      >
+          undo
+      </button>
+      <button
+        aria-label="redo" 
+        disabled={idx >= current.length - 1} 
+        onClick={redo}
+      >
+          redo
+      </button>
+      <input
+        aria-label="pick-color" 
+        type="color" 
+        value={current[idx]} 
+        onChange={({ target }) => record(target.value)} 
+      />
+      <div
+        aria-label="color-box" 
+        style={{ backgroundColor: current[idx], width: '10rem', height: '10rem' }}
+      >
+        
+      </div>
     </>
   );
 }
